@@ -141,3 +141,27 @@ class Grafo:
                 if siguiente_nodo not in visitado:
                     queue.put(siguiente_nodo)
                     visitado.add(siguiente_nodo)
+    
+
+if __name__ == "__main__":
+    '''#### Ejemplo #####'''
+
+    ''' 
+    Crear una instancia de la clase `Grafico`
+    Este gráfico no está dirigido y tiene 5 nodos
+    '''
+    g = Grafo(5, dirigido= False)
+
+    ''' Agregue bordes al gráfico con peso predeterminado = 1 '''
+    g.agregar_borde(0, 1)
+    g.agregar_borde(0, 2)
+    g.agregar_borde(1, 2)
+    g.agregar_borde(1, 4)
+    g.agregar_borde(2, 3)
+
+    ''' Imprime la lista de adyacencia en el formulario nodo n: {(nodo, peso)} '''
+    g.imprime_lista_ady( )
+
+    print ("Lo que sigue es el recorrido primero en anchura (a partir del vértice 0)")
+    g.bfs_transversal(0)
+    print( )   
