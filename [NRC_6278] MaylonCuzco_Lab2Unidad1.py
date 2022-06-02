@@ -1,6 +1,5 @@
-#importamos la libreria queue
 from queue import Queue
-
+'''importamos la libreria queue'''
 class Grafo:
     def __init__(self, num_nodos, dirigido=True):
         ''' Constructor
