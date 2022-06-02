@@ -5,20 +5,25 @@ class Grafo:
     def __init__(self, num_nodos, dirigido=True):
         ''' Constructor
         PARÁMETROS:
-            num_nodos: De tipo entero, nos muestra el numero de nodos
-            dirigido: De tipo booleano, se especifica si el grafo es dirigido o no dirigido
+            num_nodos: 
+                De tipo entero, nos muestra el numero de nodos
+            dirigido: 
+                De tipo booleano, se especifica si el grafo es dirigido o no dirigido
         ATRIBUTOS:
-            m_num_nodos: De tipo entero, muestra el numero de nodos
-            m_dirijido: De tipo booleano, indica si el grafo es o no dirigido.
-            m_nodos: Rango de los nodos
-            m_lista_ady: Diccionario, implementa la lista de adyacencia
+            m_num_nodos: 
+                De tipo entero, muestra el numero de nodos
+            m_dirijido: 
+                De tipo booleano, indica si el grafo es o no dirigido.
+            m_nodos: 
+                Rango de los nodos
+            m_lista_ady: 
+                Diccionario, implementa la lista de adyacencia
         '''
         self.m_num_nodos = num_nodos 
         ''' La función range nos perimte retorna la sucesion del numero de nodos '''
         self.m_nodos = range(self.m_num_nodos) 
         '''
          DIRIGIDO O NO DIRIGIDO
-         Especificamos que el atributo "m_dirigido" es tipo booleano 
         '''
         self.m_dirigido = dirigido 
 		
@@ -34,17 +39,22 @@ class Grafo:
     def agregar_borde(self, nodo1, nodo2, peso=1):
         ''' Se agrega los bordes 
          PARÁMETROS:
-            nodo1: De tipo entero, el nodo que genera los bordes
-            nodo2: De tipo entero, el nodo que es parte del borde
-            peso: De valor 1 establecido
+            nodo1: 
+                De tipo entero, el nodo que genera los bordes
+            nodo2: 
+                De tipo entero, el nodo que es parte del borde
+            peso: 
+                De valor 1 establecido
          ATRIBUTOS
-            m_lista_ady: Diccionario de la lista adyacente
-            m_dirigido: Booleano, indica si es o no dirigido
+            m_lista_ady: 
+                Diccionario de la lista adyacente
+            m_dirigido: 
+                Booleano, indica si es o no dirigido
          
          Definimos la función  agregar_borde la cual contrendra los parámetros de los nodos 1 y 2,
-         al igual que el peso de los nodos
+         al igual que el peso de los nodos.
          Especificamos el parámetro m_lista_ady el cual tendra como primer valor
-         el nodo 1 y se añade al node 2 y el peso de este
+         el nodo 1 y se añade al node 2 y el peso de este.
         '''
         self.m_lista_ady[nodo1].add((nodo2, peso))
         '''
@@ -60,7 +70,8 @@ class Grafo:
         PARÁMETROS:
             Sin parámetros
         ATRIBUTOS:
-            m_lista_ady: Diccionario del grafo
+            m_lista_ady: 
+                Diccionario del grafo
 
 
         Se inicializa un bucle for en el cual se establece una variable key 
@@ -74,3 +85,59 @@ class Grafo:
                 nodos especificando que termina con cerrando las llaves
             '''
             print("Nodo", key, ": ", self.m_lista_ady[key])
+
+
+    # Función que imprime el recorrido BFS (algoritmo de busqueda que recorre los nodos del grafo)
+    # de un vértice fuente dado. bfs_transversal(int s)
+    # atraviesa vértices alcanzables desde s.
+    ''' Se defina la funcion  bfs_transversal con  los parámetros self y inicio_nodo'''
+    def bfs_transversal(self, inicio_nodo):
+        ''' Muestra el recoorido BFS
+        PARÁMETRO:
+            inicio_nodo: 
+                De tipo entero, nodo por el que comienza el recorrido
+        ATRIBUTO:
+            m_lista_ady: 
+                Diccionario de la lista adyacente
+        
+        Declaramos una variable de nombre "visitado" el cual almacenará
+        un conjunto de elementos medinate el "set()" 
+        '''
+        visitado = set()
+        ''' Definimos la variable querue el cual mediante la libreria
+        que se importo de Queue() nos permite implementar
+        una cola de datos en este caso hace refencia a los nodos 
+        '''
+        queue = Queue()
+        '''
+        Agregue inicio_nodo a la cola y la lista visitada
+        Especificamos que la variable "queue" mediante la instancia "put" 
+        realiza una peticion al parametro "inicio_nodo"
+        '''
+        queue.put(inicio_nodo)
+        ''' En la variable "visitado" se almacena el parámetro "inicio_nodo" '''
+        visitado.add(inicio_nodo)
+
+        ''' 
+        Mediante la funcion while le decimos que en caso que la variable queue 
+        no realice la peticion  
+        '''
+        while not queue.empty():
+            ''' 
+            Descola un vértice de la cola e imprimirlo
+            mediante la variable "nodo_actual" nos devolera el valor del nodo  
+            '''
+            nodo_actual = queue.get()
+            ''' imprimimos el recorrido de los nodos  '''
+            print(nodo_actual, end = " ")
+            '''
+            Obtenga todos los vértices adyacentes del vértice eliminado.
+            Si un adyacente no ha sido visitado, márquelo como visitado y póngalo en cola
+            
+            Especificamos los parametros que se van a ocupara en la impresion de la lista,
+            en donde se recorre cada nodo
+            '''
+            for (siguiente_nodo, peso) in self.m_lista_ady[nodo_actual]:
+                if siguiente_nodo not in visitado:
+                    queue.put(siguiente_nodo)
+                    visitado.add(siguiente_nodo)
