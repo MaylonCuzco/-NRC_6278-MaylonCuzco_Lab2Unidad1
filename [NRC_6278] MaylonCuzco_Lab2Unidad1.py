@@ -30,7 +30,7 @@ class Grafo:
         '''
         self.m_lista_ady = {nodo: set() for nodo in self.m_nodos}      
     
-    
+
     def agregar_borde(self, nodo1, nodo2, peso=1):
         ''' Se agrega los bordes 
          PARÁMETROS:
@@ -41,13 +41,36 @@ class Grafo:
             m_lista_ady: Diccionario de la lista adyacente
             m_dirigido: Booleano, indica si es o no dirigido
          
-         Definimos la función  agregar_borde la cual contrendra los parámetros de los nodos 1 y 2, al igual que el peso de los nodos
-         Especificamos el parámetro m_lista_ady el cual tendra como primer valor el nodo 1 y se añade al node 2 y el peso de este
+         Definimos la función  agregar_borde la cual contrendra los parámetros de los nodos 1 y 2,
+         al igual que el peso de los nodos
+         Especificamos el parámetro m_lista_ady el cual tendra como primer valor
+         el nodo 1 y se añade al node 2 y el peso de este
         '''
         self.m_lista_ady[nodo1].add((nodo2, peso))
         '''
-         En caso contrario de ser falso el parametro establecido anteriormente m_dirigido, se tiene como prier valor el nodo 2 
-         y se añade el nodo 1 y el peso
+         En caso contrario de ser falso el parametro establecido anteriormente m_dirigido,
+         se tiene como prier valor el nodo 2 y se añade el nodo 1 y el peso
         '''
         if not self.m_dirigido:
             self.m_lista_ady[nodo2].add((nodo1, peso))
+    
+
+    def imprime_lista_ady(self):
+        '''Se imprime la representacion del grafo
+        PARÁMETROS:
+            Sin parámetros
+        ATRIBUTOS:
+            m_lista_ady: Diccionario del grafo
+
+
+        Se inicializa un bucle for en el cual se establece una variable key 
+        el cual hace refencia a las llaves "{}" dentro de la lista de los nodos
+        '''
+        for key in self.m_lista_ady.keys():
+            ''' Se estable que en al iprimir la lista de nodos se tendra
+                que colocar primero la expresion "nodos" seguido
+                de una llave abierta establecida por la variable "key" 
+                seguido de la expresion ":" y imprime la lista de 
+                nodos especificando que termina con cerrando las llaves
+            '''
+            print("Nodo", key, ": ", self.m_lista_ady[key])
