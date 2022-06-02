@@ -86,12 +86,8 @@ class Grafo:
             print("Nodo", key, ": ", self.m_lista_ady[key])
 
 
-    # Función que imprime el recorrido BFS (algoritmo de busqueda que recorre los nodos del grafo)
-    # de un vértice fuente dado. bfs_transversal(int s)
-    # atraviesa vértices alcanzables desde s.
-    ''' Se defina la funcion  bfs_transversal con  los parámetros self y inicio_nodo'''
     def bfs_transversal(self, inicio_nodo):
-        ''' Muestra el recoorido BFS
+        ''' Muestra el recorrido BFS (algoritmo de busqueda que recorre los nodos del grafo)
         PARÁMETRO:
             inicio_nodo: 
                 De tipo entero, nodo por el que comienza el recorrido
@@ -163,4 +159,4 @@ if __name__ == "__main__":
 
     print ("Lo que sigue es el recorrido primero en anchura (a partir del vértice 0)")
     g.bfs_transversal(0)
-    print( )   
+    print( ) 
