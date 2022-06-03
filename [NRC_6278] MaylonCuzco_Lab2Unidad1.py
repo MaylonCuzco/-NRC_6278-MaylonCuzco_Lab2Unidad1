@@ -145,14 +145,19 @@ if __name__ == "__main__":
     Crear una instancia de la clase `Grafico`
     Este gráfico no está dirigido y tiene 5 nodos
     '''
-    g = Grafo(5, dirigido= False)
+    g = Grafo(11, dirigido= True)
 
     ''' Agregue bordes al gráfico con peso predeterminado = 1 '''
     g.agregar_borde(0, 1)
     g.agregar_borde(0, 2)
-    g.agregar_borde(1, 2)
+    g.agregar_borde(0, 3)
+    g.agregar_borde(2, 6)
+    g.agregar_borde(2, 10)
     g.agregar_borde(1, 4)
-    g.agregar_borde(2, 3)
+    g.agregar_borde(3, 7)
+    g.agregar_borde(7, 9)
+    g.agregar_borde(10, 5)
+    
 
     ''' Imprime la lista de adyacencia en el formulario nodo n: {(nodo, peso)} '''
     g.imprime_lista_ady( )
